@@ -1,0 +1,9 @@
+{
+  "name": "AliRemind · Recordatorios por voz",
+  "short_name": "AliRemind",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff2fc",
+  "theme_color": "#702b71",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

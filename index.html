@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#702b71" />
+    <meta name="description" content="Convierte notas de voz en recordatorios por email" />
+    <link rel="manifest" href="./manifest.json?v=3" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css?v=3" />
+    <title>AliRemind · Recordatorios</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header>
+        <p class="eyebrow">RECORDATORIOS POR VOZ</p>
+        <div class="heading-row"><h1>AliRemind<span>✦</span></h1><button class="icon-button" id="settings-button" aria-label="Abrir ajustes">⚙</button></div>
+        <p class="intro">Graba una idea y recíbela en tu correo.</p>
+      </header>
+
+      <section class="card recorder-card" aria-labelledby="record-title">
+        <div class="visual-orbit" aria-hidden="true">
+          <span class="bubble bubble-mail">✉</span><span class="bubble bubble-star">✦</span><span class="bubble bubble-heart">♥</span>
+          <svg class="crown-mark" viewBox="0 0 220 112" fill="none"><path d="M33 83 15 30l42 25 32-42 21 43 21-43 32 42 42-25-18 53H33Z" fill="#FFC84A"/><path d="m33 83 154 0-8 18H41l-8-18Z" fill="#F39B30"/><circle cx="57" cy="53" r="8" fill="#fff3a9"/><circle cx="110" cy="54" r="8" fill="#fff3a9"/><circle cx="163" cy="53" r="8" fill="#fff3a9"/></svg>
+        </div>
+        <p class="status" id="record-title" aria-live="polite">Pulsa para grabar tu recordatorio</p>
+        <button class="record-button" id="record-button" aria-label="Empezar a grabar"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="16" y="7" width="16" height="25" rx="8" fill="currentColor"/><path d="M10 25c0 8 6 14 14 14s14-6 14-14M24 39v6m-8 0h16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></button>
+        <p class="record-hint" id="record-hint">El audio no se guarda</p>
+      </section>
+
+      <section class="card compose-card hidden" id="compose-card" aria-labelledby="compose-title">
+        <div class="section-heading"><div><p class="eyebrow">BORRADOR</p><h2 id="compose-title">Tu recordatorio</h2></div><span class="pill" id="transcription-status">Preparado</span></div>
+        <label for="reminder-text">Mensaje</label>
+        <textarea id="reminder-text" rows="5" placeholder="Escribe tu recordatorio aquí…"></textarea>
+        <label for="subject">Asunto</label>
+        <input id="subject" type="text" />
+        <button class="primary-button" id="send-button">Enviar recordatorio <span>→</span></button>
+        <p class="send-note" id="send-note">Lo enviaremos a tu email predeterminado.</p>
+      </section>
+
+      <section class="history-section" aria-labelledby="history-title">
+        <div class="section-heading"><h2 id="history-title">Enviados</h2><button class="text-button" id="clear-history">Borrar</button></div>
+        <div class="history-list" id="history-list"><p class="empty">Aún no has enviado ningún recordatorio.</p></div>
+      </section>
+      <section class="how-it-works" aria-label="Cómo funciona">
+        <div class="step"><span class="step-icon pink">🎙</span><p>Graba</p></div><span class="step-line"></span><div class="step"><span class="step-icon purple">✦</span><p>Revisa</p></div><span class="step-line"></span><div class="step"><span class="step-icon gold">✉</span><p>Recibe</p></div>
+      </section>
+      <button class="install-button" id="install-button">⬇ Instalar AliRemind en mi móvil</button>
+    </main>
+
+    <dialog id="settings-dialog">
+      <form method="dialog" class="settings-form" id="settings-form">
+        <div class="section-heading"><div><p class="eyebrow">AJUSTES</p><h2>Tu destino mágico</h2></div><button class="icon-button" value="cancel" aria-label="Cerrar">×</button></div>
+        <label for="default-email">Email predeterminado</label>
+        <input id="default-email" type="email" placeholder="tu@email.com" required />
+        <label class="checkbox"><input id="confirm-send" type="checkbox" checked /> Pedirme confirmación antes de enviar</label>
+        <button class="primary-button" value="save">Guardar ajustes</button>
+      </form>
+    </dialog>
+    <dialog id="welcome-dialog">
+      <form method="dialog" class="settings-form welcome-form" id="welcome-form">
+        <div class="welcome-crown" aria-hidden="true">♛</div>
+        <p class="eyebrow">BIENVENIDA A ALIREMIND</p>
+        <h2>¿A qué email enviamos tus notas?</h2>
+        <p class="welcome-copy">Este será tu correo predeterminado. Podrás cambiarlo cuando quieras.</p>
+        <label for="welcome-email">Tu email</label>
+        <input id="welcome-email" type="email" placeholder="tu@email.com" required autocomplete="email" />
+        <button class="primary-button" value="save">Empezar <span>→</span></button>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="./config.js?v=1"></script>
+    <script src="./app.js?v=4"></script>
+  </body>
+</html>
